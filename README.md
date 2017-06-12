@@ -40,7 +40,7 @@ CodeKata
        
  # Run Program
   The program is not an executable and is only to demonstrate how to get next generation in Game of Life. 
-  Correctness of program is determined by test cases. Please follow run test instruction to run test cases.
+  Correctness of program is determined by test cases. Please follow run test instructions to run test cases.
 
 # Run Test Cases
 
@@ -53,7 +53,7 @@ https://maven.apache.org/install.html
 4.) A summary report will be printed on console
 
 
-# Understanding test cases 
+# Understanding Test Cases 
 
 Each test case defines an input grid and expected next generation grid.
 If the next generation calculated by program and expected next genration matches the test is successsful.
