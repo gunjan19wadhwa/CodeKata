@@ -44,8 +44,16 @@ CodeKata
 
 # Run Test Cases
 
-The Program is not a executable. It just shows how to calculate the next generation of game of life usin
-
 Maven should be pre-installed to run test cases. Please find the link below to install maven
 https://maven.apache.org/install.html
 
+1.) Clone the repo 
+2.) Navigate to root folder of the project.
+3.) Run mvn test command
+4.) A summary report will be printed on console
+
+
+# Understanding test cases 
+
+Each test case defines an input grid and expected next generation grid.
+If the next generation calculated by program and expected next genration matches the test is successsful.
