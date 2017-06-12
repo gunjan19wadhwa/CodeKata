@@ -7,26 +7,52 @@ import org.junit.Test;
 public class GameOfLifeTest {
 
 	@Test
-	public void CheckRandomInput(){
-		int [][]input = { { 0, 0, 0, 0, 0, 0, 1, 0 }, 
-				   { 1, 1, 1, 0, 0, 0, 1, 0 }, 
-				   { 0, 0, 0, 0, 0, 0, 1, 0 },
-				   { 0, 0, 0, 0, 0, 0, 0, 0 }, 
-				   { 0, 0, 0, 1, 1, 0, 0, 0 },
-				   { 0, 0, 0, 1, 1, 0, 0, 0 } 
-				  }; 
-		
-		int [][] expectedNextGeneration = { { 0, 1, 0, 0, 0, 0, 0, 0 }, 
-				   { 0, 1, 0, 0, 0, 1, 1, 1 }, 
-				   { 0, 1, 0, 0, 0, 0, 0, 0 },
-				   { 0, 0, 0, 0, 0, 0, 0, 0 }, 
-				   { 0, 0, 0, 1, 1, 0, 0, 0 },
-				   { 0, 0, 0, 1, 1, 0, 0, 0 } 
-				  };
-		
+	public void CheckRandomInput() {
+		int[][] input = { { 0, 0, 0, 0, 0, 0, 1, 0 }, 
+				          { 1, 1, 1, 0, 0, 0, 1, 0 }, 
+				          { 0, 0, 0, 0, 0, 0, 1, 0 },
+				          { 0, 0, 0, 0, 0, 0, 0, 0 }, 
+				          { 0, 0, 0, 1, 1, 0, 0, 0 }, 
+				          { 0, 0, 0, 1, 1, 0, 0, 0 } 
+				         };
+
+		int[][] expectedNextGeneration = { { 0, 1, 0, 0, 0, 0, 0, 0 }, 
+				                           { 0, 1, 0, 0, 0, 1, 1, 1 },
+				                           { 0, 1, 0, 0, 0, 0, 0, 0 }, 
+				                           { 0, 0, 0, 0, 0, 0, 0, 0 }, 
+				                           { 0, 0, 0, 1, 1, 0, 0, 0 },
+				                           { 0, 0, 0, 1, 1, 0, 0, 0 } 
+				                          };
+
 		GameOfLife game = new GameOfLife();
-		int [][]actualNextGeneration = game.getNextGeneration(input);
-		
+		int[][] actualNextGeneration = game.getNextGeneration(input);
+
 		assertArrayEquals(expectedNextGeneration, actualNextGeneration);
 	}
+
+	@Test
+	public void CheckAllDeadForNextGeneration() {
+		int[][] input = { { 1, 0, 0, 0, 0, 0, 0, 0 }, 
+				          { 0, 1, 0, 0, 0, 0, 0, 0 }, 
+				          { 0, 0, 0, 0, 0, 0, 0, 0 },
+				          { 0, 0, 0, 0, 0, 0, 0, 0 }, 
+				          { 0, 0, 0, 0, 0, 0, 1, 0 }, 
+				          { 0, 0, 0, 0, 0, 0, 0, 1 } 
+				         };
+
+		int[][] expectedNextGeneration = { { 0, 0, 0, 0, 0, 0, 0, 0 }, 
+				                           { 0, 0, 0, 0, 0, 0, 0, 0 },
+				                           { 0, 0, 0, 0, 0, 0, 0, 0 }, 
+				                           { 0, 0, 0, 0, 0, 0, 0, 0 }, 
+				                           { 0, 0, 0, 0, 0, 0, 0, 0 },
+				                           { 0, 0, 0, 0, 0, 0, 0, 0 } 
+				                          };
+
+		GameOfLife game = new GameOfLife();
+		int[][] actualNextGeneration = game.getNextGeneration(input);
+
+		assertArrayEquals(expectedNextGeneration, actualNextGeneration);
+	}
+	
+	
 }
