@@ -12,9 +12,9 @@ public class GameOfLife {
 			for (int colIndex = 0; colIndex < columns; colIndex++) {
 				int aliveNeighbors = findAliveNeighbors(grid, rowIndex, colIndex);	
 				
-				if (isAliveAndAliveNeigborsLessThanTwo(grid, rowIndex, colIndex, aliveNeighbors))
+				if (isAliveAndAliveNeighborsLessThanTwo(grid, rowIndex, colIndex, aliveNeighbors))
 					markCellDead(futureGeneration, rowIndex, colIndex);
-				else if (ifIsAliveAndAliveNeigborsGreaterThan3(grid, rowIndex, colIndex, aliveNeighbors))
+				else if (isAliveAndAliveNeigborsGreaterThan3(grid, rowIndex, colIndex, aliveNeighbors))
 					markCellDead(futureGeneration, rowIndex, colIndex);
 				else if (isDeadAndAliveNeighborsEqualToThree(grid, rowIndex, colIndex, aliveNeighbors))
 					markCellAlive(futureGeneration, rowIndex, colIndex);
@@ -28,7 +28,7 @@ public class GameOfLife {
 		return futureGeneration;
 	}
 
-	private static boolean isAliveAndAliveNeigborsLessThanTwo(int[][] grid, int l, int m, int aliveNeighbours) {
+	private static boolean isAliveAndAliveNeighborsLessThanTwo(int[][] grid, int l, int m, int aliveNeighbours) {
 		return (grid[l][m] == 1) && (aliveNeighbours < 2);
 	}
 
@@ -36,7 +36,7 @@ public class GameOfLife {
 		int aliveNeighbours = 0;
 		for (int i = -1; i <= 1; i++){
 			for (int j = -1; j <= 1; j++){
-				if ( l+i < 0 || m+j <0 || l+i >5 || m+j >7){
+				if ( handleArrayIndexOutOfBound(l, m, i, j)){
 					continue;
 				} else {
 					aliveNeighbours += grid[l + i][m + j];
@@ -46,6 +46,10 @@ public class GameOfLife {
 		}
 		aliveNeighbours -= grid[l][m];
 		return aliveNeighbours;
+	}
+
+	private static boolean handleArrayIndexOutOfBound(int l, int m, int i, int j) {
+		return l+i < 0 || m+j <0 || l+i >5 || m+j >7;
 	}
 
 	private static int markCellAlive(int[][] future, int l, int m) {
@@ -64,7 +68,7 @@ public class GameOfLife {
 		return (grid[l][m] == 0) && (aliveNeighbours == 3);
 	}
 
-	private static boolean ifIsAliveAndAliveNeigborsGreaterThan3(int[][] grid, int l, int m, int aliveNeighbours) {
+	private static boolean isAliveAndAliveNeigborsGreaterThan3(int[][] grid, int l, int m, int aliveNeighbours) {
 		return (grid[l][m] == 1) && (aliveNeighbours > 3);
 	}
 
