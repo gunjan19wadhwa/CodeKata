@@ -47,10 +47,10 @@ CodeKata
 Maven should be pre-installed to run test cases. Please find the link below to install maven
 https://maven.apache.org/install.html
 
-1.) Clone the repo 
-2.) Navigate to root folder of the project.
-3.) Run mvn test command
-4.) A summary report will be printed on console
+1. Clone the repo 
+2. Navigate to root folder of the project.
+3. Run mvn test command
+4. A summary report will be printed on console
 
 
 # Understanding Test Cases 
