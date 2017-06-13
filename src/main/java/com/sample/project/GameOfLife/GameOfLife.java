@@ -2,28 +2,26 @@ package com.sample.project.GameOfLife;
 
 public class GameOfLife {
 	
-	public static final int row = 6;
-	public static final int col = 8;
+	public static final int rows = 6;
+	public static final int columns = 8;
 
 	public int[][] getNextGeneration(int grid[][]) {
-		int[][] futureGeneration = new int[row][col];
+		int[][] futureGeneration = new int[rows][columns];
 
-		for (int l = 0; l < row; l++) {
-			for (int m = 0; m < col; m++) {
-				int aliveNeighbors = findAliveNeighbors(grid, l, m);	
+		for (int rowIndex = 0; rowIndex < rows; rowIndex++) {
+			for (int colIndex = 0; colIndex < columns; colIndex++) {
+				int aliveNeighbors = findAliveNeighbors(grid, rowIndex, colIndex);	
 				
-				if (isAliveAndAliveNeigborsLessThanTwo(grid, l, m, aliveNeighbors))
-					markCellDead(futureGeneration, l, m);
-				else if (ifIsAliveAndAliveNeigborsGreaterThan3(grid, l, m, aliveNeighbors))
-					markCellDead(futureGeneration, l, m);
-				else if (isDeadAndAliveNeighborsEqualToThree(grid, l, m, aliveNeighbors))
-					markCellAlive(futureGeneration, l, m);
-				
-				else if (isAliveAndAliveNeighborEqualtoTwoOrThree(grid, l, m, aliveNeighbors))
-					markCellAlive(futureGeneration, l, m);
-			
+				if (isAliveAndAliveNeigborsLessThanTwo(grid, rowIndex, colIndex, aliveNeighbors))
+					markCellDead(futureGeneration, rowIndex, colIndex);
+				else if (ifIsAliveAndAliveNeigborsGreaterThan3(grid, rowIndex, colIndex, aliveNeighbors))
+					markCellDead(futureGeneration, rowIndex, colIndex);
+				else if (isDeadAndAliveNeighborsEqualToThree(grid, rowIndex, colIndex, aliveNeighbors))
+					markCellAlive(futureGeneration, rowIndex, colIndex);
+				else if (isAliveAndAliveNeighborEqualtoTwoOrThree(grid, rowIndex, colIndex, aliveNeighbors))
+					markCellAlive(futureGeneration, rowIndex, colIndex);
 				else
-					futureGeneration[l][m] = grid[l][m];
+					futureGeneration[rowIndex][colIndex] = grid[rowIndex][colIndex];
 			}
 		}
 
